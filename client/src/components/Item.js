@@ -16,12 +16,12 @@ class Item extends Component {
 
     render() {
         return (
-            <div className={"Item " + (this.props.quantityFilled >= 100 ? "greyed-out" : "")}>
+            <div className={"Item " + (this.props.quantityFilled >= this.props.quantityNeeded ? "greyed-out" : "")}>
                 <div className="img-container">
                     <img src={this.props.imageUrl} alt={this.props.name} />
                 </div>
                 <h1>{this.props.name}</h1>
-                <p>{this.props.quantityFilled}/100 purchased so far</p>
+                <p>{this.props.quantityFilled}/{this.props.quantityNeeded} purchased so far</p>
                 <p><span className="price">${Number(this.props.price).toFixed(2)}</span> per unit</p>
                 <div>
                     <label htmlFor="qty">QTY:</label>

@@ -15,6 +15,7 @@ class Items extends Component {
                     imageUrl={_.get(item, 'fields.Image[0].url', 'https://www.honestbee.co.th/images/placeholder.jpg')}
                     price={_.get(item, 'fields[Unit Price]', 0.0)}
                     quantityFilled={_.get(item, 'fields[Quantity Filled]', 0)}
+                    quantityNeeded={_.get(item, 'fields[Quantity Needed]', 0)}
                     addItemToCart={this.props.addItemToCart}
                 />
             </li>
