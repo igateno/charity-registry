@@ -22,6 +22,28 @@
   font-size: large;
 }
 
+.Body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.Items {
+  flex: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Items ul {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+}
+
+.Cart {
+  margin: 20px 50px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

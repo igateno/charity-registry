@@ -4,7 +4,7 @@ const Airtable = require('airtable');
 const app = express();
 const port = process.env.PORT || 5000;
 
-var at = new Airtable({apiKey: 'SECRET'}).base('appqpCTfoETGuzN7O');
+var at = new Airtable({apiKey: 'keyhntcUzIVGNPh99'}).base('appqpCTfoETGuzN7O');
 
 app.get('/api/items', (req, res) => {
     var items = [];
