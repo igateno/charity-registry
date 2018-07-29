@@ -9,7 +9,8 @@ import Cart from './components/Cart.js';
 class App extends Component {
   state = {
     response: '',
-    cart: {}
+    cartItems: {},
+    cartTotal: 0,
   };
 
   componentDidMount() {
@@ -28,17 +29,35 @@ class App extends Component {
   };
 
   addItemToCart(id, quantity) {
-    console.log(this.state.items)
-    console.log("add " + quantity + " of " + _.get(this.state.items, [id, 'fields', 'Name'], 'Unknown Item') + ". Item ID: " + id)
-    var cart = this.state.cart;
-    cart[id] = {
+    var cartItems = this.state.cartItems;
+    var cartTotal = this.state.cartTotal;
+
+    cartItems[id] = {
       id: id,
       name: _.get(this.state.items, [id, 'fields', 'Name'], 'Unknown Item'),
       quantity: quantity,
       unitPrice: _.get(this.state.items, [id, 'fields', 'Unit Price'], 0),
     }
-    this.setState({ cart });
+
+    cartTotal += _.get(this.state.items, [id, 'fields', 'Unit Price'], 0) * quantity;
+
+    this.setState({ cartItems, cartTotal });
   };
+
+  removeItemFromCart(id, quantity) {
+    var cartItems = this.state.cartItems;
+    var cartTotal = this.state.cartTotal;
+
+    var thisItem = cartItems[id];
+    cartTotal -= thisItem.unitPrice * thisItem.quantity;
+    delete cartItems[id];
+
+    if (_.values(cartItems).length === 0) {
+      cartTotal = 0
+    }
+    
+    this.setState({ cartItems, cartTotal });
+  }
 
   render() {
     return (
@@ -48,8 +67,15 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="Body">
-          <Items items={_.values(this.state.items)} addItemToCart={this.addItemToCart.bind(this)} />
-          <Cart total="52.99" items={_.values(this.state.cart)} />
+          <Items
+            items={_.values(this.state.items)}
+            addItemToCart={this.addItemToCart.bind(this)}
+          />
+          <Cart
+            total={this.state.cartTotal}
+            items={_.values(this.state.cartItems)}
+            removeItemFromCart={this.removeItemFromCart.bind(this)}
+          />
         </div>
       </div>
     );

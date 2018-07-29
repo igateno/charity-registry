@@ -7,9 +7,11 @@ class Cart extends Component {
         if (!this.props.items) { return; }
         return this.props.items.map(item => (
             <li key={item.id}>
-                <CartItem 
+                <CartItem
+                    id={item.id}
                     name={item.name}
                     quantity={item.quantity}
+                    removeItemFromCart={this.props.removeItemFromCart}
                 />
             </li>
         ));
