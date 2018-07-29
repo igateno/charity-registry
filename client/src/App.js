@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Items from './components/Items.js';
@@ -63,9 +62,20 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src="https://www.stanthonysf.org/app/uploads/2015/09/STA_Horiz_RGB.png" className="App-logo" alt="logo" />
         </header>
+        <div className="top-copy">
+            <h1>Grocery Shop for This Week's Menu</h1>
+            <p>
+              Sunday: Roasted Chicken with herb rice pilaf<br />
+              Monday: Spaghetti with meatless tomato sauce with parmesan cheese<br />
+              Tuesday: Fish Tacos<br />
+              Wednesday: Chef’s Choice<br />
+              Thursday: Mac n Cheese<br />
+              Friday: BBQ Turkey<br />
+              Saturday: Breakfast Sandwich Brunch<br />
+            </p>
+          </div>
         <div className="Body">
           <Items
             items={_.values(this.state.items)}

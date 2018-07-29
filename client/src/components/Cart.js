@@ -3,6 +3,16 @@ import React, { Component } from 'react';
 import CartItem from './CartItem.js';
 
 class Cart extends Component {
+    renderListOfItems() {
+        if (!this.props.items || this.props.items.length === 0) {
+            return (
+                <div><br/>Your cart is currently empty</div>
+            )
+        } else {
+            return (<ul>{this.renderItems()}</ul>)
+        }
+    }
+
     renderItems() {
         if (!this.props.items) { return; }
         return this.props.items.map(item => (
@@ -29,7 +39,7 @@ class Cart extends Component {
                     <button type="submit">Buy Online</button>
                     <button type="submit">Print Shopping List</button>
                 </div>
-                <ul>{this.renderItems()}</ul>
+                {this.renderListOfItems()}
             </div>
         );
     }
