@@ -43,8 +43,8 @@
 .Item {
   margin: 10px;
   padding: 10px;
-  height: 620px;
-  width: 360px;
+  height: 432px;
+  width: 240;
 }
 
 .img-container {
@@ -58,7 +58,8 @@
 }
 
 .Cart {
-  margin: 20px 50px;
+  margin: 20px 25px;
+  min-width: 250px;
 }
 
 @keyframes App-logo-spin {

@@ -34,7 +34,7 @@ class App extends Component {
         </header>
         <div className="Body">
           <Items items={this.state.items}/>
-          <Cart />
+          <Cart total="52.99" />
         </div>
       </div>
     );

@@ -12,6 +12,8 @@ class Items extends Component {
                 <Item
                     name={_.get(item, 'fields.Name', 'Unknown Item')}
                     imageUrl={_.get(item, 'fields.Image[0].url', 'https://www.honestbee.co.th/images/placeholder.jpg')}
+                    price={_.get(item, 'fields[Unit Price]', 0.0)}
+                    quantityFilled={_.get(item, 'fields[Quantity Filled]', 0)}
                 />
             </li>
         ));
