@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class CartItem extends Component {
     onButtonClick() {
-        this.props.removeItemFromCart(this.props.id);
+        this.props.removeItemFromCart(this.props.id, this.props.quantity);
     }
 
     render() {

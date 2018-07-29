@@ -8,6 +8,7 @@ import Cart from './components/Cart.js';
 class App extends Component {
   state = {
     response: '',
+    items: {},
     cartItems: {},
     cartTotal: 0,
   };
@@ -28,8 +29,12 @@ class App extends Component {
   };
 
   addItemToCart(id, quantity) {
+    var items = this.state.items;
     var cartItems = this.state.cartItems;
     var cartTotal = this.state.cartTotal;
+
+    const oldQuantityFilled = _.get(items, [id, 'fields', 'Quantity Filled'], 0);
+    _.set(items, [id, 'fields', 'Quantity Filled'], Number(oldQuantityFilled)+Number(quantity));
 
     cartItems[id] = {
       id: id,
@@ -40,19 +45,23 @@ class App extends Component {
 
     cartTotal += _.get(this.state.items, [id, 'fields', 'Unit Price'], 0) * quantity;
 
-    this.setState({ cartItems, cartTotal });
+    this.setState({ items, cartItems, cartTotal });
   };
 
   removeItemFromCart(id, quantity) {
+    var items = this.state.items;
     var cartItems = this.state.cartItems;
     var cartTotal = this.state.cartTotal;
+
+    const oldQuantityFilled = _.get(items, [id, 'fields', 'Quantity Filled'], 0);
+    _.set(items, [id, 'fields', 'Quantity Filled'], Number(oldQuantityFilled)-Number(quantity));
 
     var thisItem = cartItems[id];
     cartTotal -= thisItem.unitPrice * thisItem.quantity;
     delete cartItems[id];
 
     if (_.values(cartItems).length === 0) {
-      cartTotal = 0
+      cartTotal = 0;
     }
     
     this.setState({ cartItems, cartTotal });
