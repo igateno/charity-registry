@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class Item extends Component {
+    state = {
+        quantity: 1,
+    }
+
+    onInputChange(e) {
+        this.setState({quantity: e.target.value})
+    }
+
+    onAddButtonClick(e) {
+        this.props.addItemToCart(this.props.id, this.state.quantity);
+    }
+
     render() {
         return (
             <div className="Item">
@@ -11,9 +23,9 @@ class Item extends Component {
                 <p>{this.props.quantityFilled}/100 count met!</p>
                 <p><span className="price">${Number(this.props.price).toFixed(2)}</span> per unit</p>
                 <div>
-                    <label for="qty">QTY:</label>
-                    <input type="text" id="qty" />
-                    <button name="add-to-cart" type="submit">+</button>
+                    <label htmlFor="qty">QTY:</label>
+                    <input type="text" value={this.state.quantity} onChange={this.onInputChange.bind(this)} />
+                    <button name="add-to-cart" type="submit" onClick={this.onAddButtonClick.bind(this)}>+</button>
                 </div>
             </div>
         );

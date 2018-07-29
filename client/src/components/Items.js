@@ -10,10 +10,12 @@ class Items extends Component {
         return this.props.items.map(item => (
             <li key={item.id}>
                 <Item
+                    id={_.get(item, 'id', 0)}
                     name={_.get(item, 'fields.Name', 'Unknown Item')}
                     imageUrl={_.get(item, 'fields.Image[0].url', 'https://www.honestbee.co.th/images/placeholder.jpg')}
                     price={_.get(item, 'fields[Unit Price]', 0.0)}
                     quantityFilled={_.get(item, 'fields[Quantity Filled]', 0)}
+                    addItemToCart={this.props.addItemToCart}
                 />
             </li>
         ));
