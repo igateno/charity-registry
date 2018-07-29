@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
+import CartItem from './CartItem.js';
+
 class Cart extends Component {
     renderItems() {
         if (!this.props.items) { return; }
         return this.props.items.map(item => (
             <li key={item.id}>
-                {item.name} - QTY: {item.quantity} - ${Number(item.unitPrice * item.quantity).toFixed(2)}
+                <CartItem 
+                    name={item.name}
+                    quantity={item.quantity}
+                />
             </li>
         ));
     }
@@ -17,6 +22,10 @@ class Cart extends Component {
                 <p>You provided this much value!</p>
                 <div className="cartTotal">
                     <p>${Number(this.props.total).toFixed(2)}</p>
+                </div>
+                <div className="cart-buttons">
+                    <button type="submit">Buy Online</button>
+                    <button type="submit">Print Shopping List</button>
                 </div>
                 <ul>{this.renderItems()}</ul>
             </div>

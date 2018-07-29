@@ -1,3 +1,7 @@
+ul {
+  list-style-type: none;
+}
+
 .App {
   text-align: center;
 }
@@ -37,7 +41,6 @@
 .Items ul {
   display: flex;
   flex-flow: row wrap;
-  list-style-type: none;
 }
 
 .Item {
@@ -60,6 +63,23 @@
 .Cart {
   margin: 20px 25px;
   min-width: 250px;
+}
+
+.cart-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.CartItem {
+  width: 200px;
+  height: auto;
+  text-align: left;
+  margin: 5px 0px;
+}
+
+.CartItem h1 {
+  font-size: 12px;
 }
 
 @keyframes App-logo-spin {
